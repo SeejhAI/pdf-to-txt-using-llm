@@ -1,13 +1,14 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-import requests
 import main
 load_dotenv()
 
 
 DB_URI: str = os.getenv("DB_URI")
 API_KEY: str = os.getenv("API_KEY")
+
+
 def propmt():
     genai.configure(
         api_key=API_KEY)

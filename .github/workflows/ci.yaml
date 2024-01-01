@@ -1,0 +1,72 @@
+
+
+name: Testing
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Get changed Python files and function
+        run: | 
+          git fetch origin
+          BASE_BRANCH=$(git rev-parse origin/main)
+          CHANGED_FILES=$(git diff --name-only $BASE_BRANCH HEAD | grep '^tests/.*\.py$' || true)
+          echo "Changed Python Test Files: $CHANGED_FILES"
+          echo 'CHANGED_FILES<<EOF' >> $GITHUB_ENV
+          echo "$CHANGED_FILES" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+          # Extract changed function names
+          CHANGED_FUNCTIONS=$(git diff -U0 $BASE_BRANCH HEAD $CHANGED_FILES | grep -E '^\+' | grep -E 'def ' | sed -E 's/^\+.*def ([a-zA-Z_][a-zA-Z0-9_]*)\(.*/\1/' || true)
+          echo "Changed Functions: $CHANGED_FUNCTIONS"
+          echo 'CHANGED_FUNCTIONS<<EOF' >> $GITHUB_ENV
+          echo "$CHANGED_FUNCTIONS" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Print directory contents
+        run: |
+          ls -R
+
+      - name: Run affected tests
+        run: |
+          if [ -n "$CHANGED_FILES" ]; then
+            echo "Running affected tests."
+            cd $GITHUB_WORKSPACE
+            # Convert the changed files list to space-separated format
+            CHANGED_FILES_LIST=$(echo "$CHANGED_FILES" | tr '\n' ' ')
+
+            # Run specific functions if available
+            if [ -n "$CHANGED_FUNCTIONS" ]; then
+              echo "Running specific functions: $CHANGED_FUNCTIONS"
+              for func in $CHANGED_FUNCTIONS; do
+                python -m pytest -v $CHANGED_FILES_LIST -k "$func"
+              done
+            else
+              echo "No specific functions changed. Running all tests in changed files."
+              python -m pytest -v $CHANGED_FILES_LIST
+            fi
+          else
+            echo "No Python test files changed. Skipping tests."
+          fi 

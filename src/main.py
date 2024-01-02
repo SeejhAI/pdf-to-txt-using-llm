@@ -2,6 +2,15 @@ import pypdf
 
 
 def pdf_to_text(pdf_path):
+    """
+    Convert a PDF file to text.
+
+    Parameters:
+    pdf_path (str): The path of the PDF file.
+
+    Returns:
+    str: The extracted text from the PDF file.
+    """
     # Open the PDF file in binary mode
     with open(pdf_path, 'rb') as pdf_file:
         # Create a PDF reader object

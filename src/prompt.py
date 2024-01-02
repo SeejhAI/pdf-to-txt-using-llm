@@ -1,9 +1,9 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-# from . import main
-import main
+from . import main
 import pdfimagetotext
+
 load_dotenv()
 
 
@@ -56,6 +56,7 @@ def prompt():
         
 
     response = model.generate_content(f"Summarize in bulit points {text} ")
+
     return response.text
 
 

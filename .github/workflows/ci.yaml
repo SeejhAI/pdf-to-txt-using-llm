@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
+
       - name: Get changed Python files and function
         run: | 
           git fetch origin
@@ -43,6 +43,11 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_key: ${{ secrets.API_KEY }}
+
       - name: Print directory contents
         run: |
           ls -R
@@ -67,4 +72,4 @@ jobs:
             fi
           else
             echo "No Python test files changed. Skipping tests."
-          fi 
+          fi

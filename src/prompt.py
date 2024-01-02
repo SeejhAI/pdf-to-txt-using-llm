@@ -1,7 +1,7 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-from . import main
+import main
 load_dotenv()
 
 
@@ -18,7 +18,7 @@ def prompt():
     pdf_path = os.path.join(os.path.dirname(current_script_path), '..', 'input.pdf')
 
     text = main.pdf_to_text(pdf_path)
-    response = model.generate_content(f"Summarize in bulit points {text} ")
+    response = model.generate_content(f"Expalin in details what is it {text} ")
     return response.text
 
 

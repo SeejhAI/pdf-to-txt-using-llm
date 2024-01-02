@@ -5,6 +5,15 @@ from PIL import Image
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 def jpeg_to_text(image_path):
+    """
+    Convert a JPEG image to text using optical character recognition (OCR).
+
+    Args:
+        image_path (str): The path to the JPEG image file.
+
+    Returns:
+        str: The extracted text from the image.
+    """
     # Open the JPEG image file
     img = Image.open(image_path)
 

@@ -11,6 +11,15 @@ API_KEY: str = os.getenv("API_KEY")
 
 
 def remove_lines_with_www(text):
+    """
+    Removes lines from the given text that contain the substring "www."
+
+    Parameters:
+        text (str): The input text to process.
+
+    Returns:
+        str: The processed text with lines containing "www." removed.
+    """
     # Split the text into lines
     lines = text.split('\n')
 

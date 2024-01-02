@@ -1,7 +1,7 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-import  main
+import main
 import pdfimagetotext
 
 
@@ -45,7 +45,7 @@ def prompt():
     current_script_path = os.path.abspath(__file__)
 
     # Construct the path to 'input.pdf' based on the current script path
-    pdf_path = os.path.join(os.path.dirname(current_script_path), '..', 'sindhi.pdf')
+    pdf_path = os.path.join(os.path.dirname(current_script_path), '..', 'input.pdf')
 
     result = main.pdf_to_text(pdf_path)
     text = remove_lines_with_www(result)

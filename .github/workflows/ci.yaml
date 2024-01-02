@@ -14,7 +14,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
+
+      - name: Print directory contents
+        run: ls -R
+
       - name: Get changed Python files and function
         run: | 
           git fetch origin
@@ -43,10 +46,6 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Print directory contents
-        run: |
-          ls -R
-
       - name: Run affected tests
         run: |
           if [ -n "$CHANGED_FILES" ]; then
@@ -67,8 +66,7 @@ jobs:
             fi
           else
             echo "No Python test files changed. Skipping tests."
-          fi 
+          fi
 
 
 
-          

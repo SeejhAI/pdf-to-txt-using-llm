@@ -9,11 +9,11 @@ pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 def pdf_images_to_text(pdf_path, dpi=300):
     """
     Converts a PDF file to text by extracting text from each page image.
-    
+
     Parameters:
         pdf_path (str): The path to the PDF file.
         dpi (int): The resolution in dots per inch of the extracted images. Default is 300.
-    
+
     Returns:
         str: The extracted text from all pages, separated by page numbers.
     """

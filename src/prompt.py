@@ -50,9 +50,8 @@ def prompt():
     result = main.pdf_to_text(pdf_path)
     text = remove_lines_with_www(result)
 
-    if text is  None or len(text) <= 10:
+    if text is None or len(text) <= 10:
         text = pdfimagetotext.pdf_images_to_text(pdf_path)
-
 
     response = model.generate_content(f"Summarize in bulit points {text} ")
     return response.text

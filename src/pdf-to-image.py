@@ -1,10 +1,10 @@
 from pdf2image import convert_from_path
-from PIL import Image
+
 
 def pdf_to_images(pdf_path, image_prefix, format='JPEG', dpi=300):
     """
     Convert a PDF file to a list of images.
-    
+
     Args:
         pdf_path (str): The path to the PDF file.
         image_prefix (str): The prefix to use for each image file.
@@ -17,6 +17,7 @@ def pdf_to_images(pdf_path, image_prefix, format='JPEG', dpi=300):
     # Save each image to the specified format
     for i, image in enumerate(images):
         image.save(f"{image_prefix}_page_{i+1}.{format.lower()}", format=format)
+
 
 # Example usage
 pdf_to_images('../sindhi.pdf', 'output', format='JPEG')

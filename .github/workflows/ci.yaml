@@ -67,6 +67,10 @@ jobs:
           else
             echo "No Python test files changed. Skipping tests."
           fi
-
+      - name: Set up Google Cloud credentials
+        run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
+        env:
+            GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.API_KEY }}
+        
 
 

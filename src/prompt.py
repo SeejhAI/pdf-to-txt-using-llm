@@ -52,12 +52,11 @@ def prompt():
 
     if text is None or len(text) <= 10:
         text = pdfimagetotext.pdf_images_to_text(pdf_path)
-    format : str =  "{\"1\" : {\"Question 1\": \"question text\", \"Options\": {\"A\": \"option text or any sambol and should string \",\"B\": \"option text or any sambol and should be string\",'C': \"option text or any sambol and should be string\",\"D\': \"option text or any sambol and should be string\",} \"Correct Answer\": \"A\", \"Explanation\": \"Explanation text.\"}"
     prompt = f"""
     Suppose you are examiner for School student  and are going to take a test so you have to  generate a set of 10 multiple-choice questions MCQs.
-    Each question should include 4 answer options with options like a ,b ,c,d those options should be related to the same topic and just one should be right answer,  
-    and please provide the correct answer for each question along with a shortest explanation. 
-    Please ensure that the questions cover various topic in given {text} . 
+    Each question should include 4 answer options with options like a ,b ,c,d those options should be related to the same topic and just one should be right answer,
+    and please provide the correct answer for each question along with a shortest explanation.
+    Please ensure that the questions cover various topic in given {text}.
     """
     response = model.generate_content(prompt)
     return response.text

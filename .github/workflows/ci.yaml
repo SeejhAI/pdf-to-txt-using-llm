@@ -67,13 +67,8 @@ jobs:
           else
             echo "No Python test files changed. Skipping tests."
           fi
-      - name: Set up Makersuite API key
-        run: echo "MAKERSUITE_API_KEY=${{ secrets.MAKERSUITE_API_KEY }}" >> $GITHUB_ENV
+      - name: Set up Google Cloud credentials
+        run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_ENV
+        env:
+            GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         
-      - name: Debug Environment
-        run: |
-            echo "MAKERSUITE_API_KEY: $MAKERSUITE_API_KEY"
-            printenv
-        
-
-

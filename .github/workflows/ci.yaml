@@ -44,7 +44,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest
+        
 
       - name: Run affected tests
         run: |
@@ -58,7 +58,7 @@ jobs:
             if [ -n "$CHANGED_FUNCTIONS" ]; then
               echo "Running specific functions: $CHANGED_FUNCTIONS"
               for func in $CHANGED_FUNCTIONS; do
-                python -m pytest -v $CHANGED_FILES_LIST -k "$func"
+                python -m pytest -v -x $CHANGED_FILES_LIST -k "$func"
               done
             else
               echo "No specific functions changed. Running all tests in changed files."

@@ -3,6 +3,15 @@ import os
 
 
 def test_pdf_to_text():
+    """
+    This function is used to test the `pdf_to_text` function.
+
+    Parameters:
+    - None
+
+    Returns:
+    - None
+    """
     current_script_path = os.path.abspath(__file__)
     # Define paths for a sample PDF
     pdf_path = os.path.join(os.path.dirname(current_script_path), '..', 'input.pdf')

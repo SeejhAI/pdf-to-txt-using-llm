@@ -1,8 +1,8 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-import main
-import pdfimagetotext
+from . import main
+from . import pdfimagetotext
 
 
 load_dotenv()

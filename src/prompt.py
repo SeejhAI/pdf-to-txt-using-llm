@@ -3,7 +3,8 @@ import os
 from dotenv import load_dotenv
 from . import main
 from . import pdfimagetotext
-
+# import main
+# import pdfimagetotext
 
 load_dotenv()
 API_KEY: str = os.getenv("API_KEY")

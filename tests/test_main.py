@@ -5,7 +5,8 @@ import os
 def test_pdf_to_text():
     current_script_path = os.path.abspath(__file__)
     # Define paths for a sample PDF
-    pdf_path = os.path.join(os.path.dirname(current_script_path), '..', 'input.pdf')
+    pdf_path = os.path.join(os.path.dirname(
+        current_script_path), '..', 'input.pdf')
     # Call the function to convert PDF to text
     result_text = main.pdf_to_text(pdf_path)
 

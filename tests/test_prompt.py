@@ -35,6 +35,21 @@ def test_checking_api_key():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def test_checking_prompt():
     pr = prompt.prompt()
     assert pr.strip()

@@ -16,7 +16,8 @@ def pdf_to_images(pdf_path, image_prefix, format='JPEG', dpi=300):
 
     # Save each image to the specified format
     for i, image in enumerate(images):
-        image.save(f"{image_prefix}_page_{i+1}.{format.lower()}", format=format)
+        image.save(f"{image_prefix}_page_{i+1}.{format.lower()}",
+                   format=format)
 
 
 # Example usage

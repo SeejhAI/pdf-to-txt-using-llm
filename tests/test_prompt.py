@@ -11,45 +11,6 @@ def test_checking_api_key():
     assert API_KEY.strip()  # This will raise an error if the string is empty
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def test_checking_prompt():
     pr = prompt.prompt()
     assert pr.strip()

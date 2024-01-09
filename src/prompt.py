@@ -46,7 +46,8 @@ def prompt():
     current_script_path = os.path.abspath(__file__)
 
     # Construct the path to 'input.pdf' based on the current script path
-    pdf_path = os.path.join(os.path.dirname(current_script_path), '..', 'input1.pdf')
+    pdf_path = os.path.join(os.path.dirname(
+        current_script_path), '..', 'input1.pdf')
 
     result = main.pdf_to_text(pdf_path)
     text = remove_lines_with_www(result)

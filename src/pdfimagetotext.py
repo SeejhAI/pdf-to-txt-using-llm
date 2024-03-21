@@ -31,7 +31,13 @@ def pdf_images_to_text(pdf_path, dpi=300):
     return all_text
 
 
+def save_text_to_file(text, file_path):
+    """Save text to a file."""
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(text)
+
 # Example usage
 if __name__ == '__main__':
-    result_text = pdf_images_to_text('../sindhi.pdf')
-    print(result_text)
+    result_text = pdf_images_to_text('../Sindh_University_2014-converted-converted.pdf')
+    save_text_to_file(result_text, 'Sindh_University_2014.txt')
+    print("Text saved to 'output_text1.txt' file.")

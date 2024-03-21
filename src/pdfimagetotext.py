@@ -38,6 +38,6 @@ def save_text_to_file(text, file_path):
 
 # Example usage
 if __name__ == '__main__':
-    result_text = pdf_images_to_text('../Sindh_University_2014-converted-converted.pdf')
-    save_text_to_file(result_text, 'Sindh_University_2014.txt')
+    result_text = pdf_images_to_text('../Sindh-University-previous-year-Test-papers_-1-1-1-3.pdf')
+    save_text_to_file(result_text, 'Sindh-University-previous-year-Test-papers.txt')
     print("Text saved to 'output_text1.txt' file.")
